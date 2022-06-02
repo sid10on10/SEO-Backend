@@ -32,14 +32,19 @@ function addResult(response, domain, eachKeyword){
 }
 
 router.post('/', async function(req, res, next) {
-  let {keywords, geography, domain} = req.body
-  let output = []
-  for(eachKeyword of keywords){
-    let response = await getData(eachKeyword, geography)
-    let keywordResult = addResult(response, domain, eachKeyword)
-    output.push(keywordResult)
+  try {
+    let {keywords, geography, domain} = req.body
+    let output = []
+    for(eachKeyword of keywords){
+      let response = await getData(eachKeyword, geography)
+      let keywordResult = addResult(response, domain, eachKeyword)
+      output.push(keywordResult)
+    }
+    res.status(200).json({message: "success", results: output})
+  } catch (error) {
+    res.status(500).json({message: "failed", error: "Internal Server error"})
   }
-  res.json({message: "success", results: output})
+  
 });
 
 module.exports = router;
