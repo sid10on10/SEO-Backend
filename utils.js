@@ -18,7 +18,11 @@ module.exports = async function getData(keyword, location){
             'content-type': 'application/json'
         }
     }
-    let response = await axios(config)
-    var result = response['data']['tasks'];
-    return result;
+    try {
+        let response = await axios(config)
+        var result = response['data']['tasks'];
+        return result;
+    } catch (error) {
+        console.log(error)
+    }
 }

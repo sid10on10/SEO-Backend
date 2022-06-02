@@ -1,4 +1,4 @@
-let email = 'sid10on10@gmail.com';
-let apiPassword = '83aad0d195423344';
+let email = 'siddhantk.singh.phe14@itbhu.ac.in';
+let apiPassword = '810b35ca68fe9ace';
 
 module.exports = {email, apiPassword};
